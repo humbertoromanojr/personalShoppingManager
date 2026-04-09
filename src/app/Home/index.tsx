@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <View style={s.container}>
       <StatusBar style="light" />
-      <Image style={s.logo} source={require("../../assets/logo.png")} />
+      <Image style={s.logo} source={require("@/assets/logo.png")} />
     </View>
   );
 }
