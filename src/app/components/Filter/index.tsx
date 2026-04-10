@@ -30,8 +30,9 @@ export default function Filter({ status, isActive, ...rest }: Props) {
 
 const s = StyleSheet.create({
   container: {
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    gap: 5,
   },
   title: {
     color: "#222",

@@ -6,6 +6,8 @@ import Input from "@/app/components/Input";
 import Filter from "@/app/components/Filter";
 import { FilterStatus } from "@/types/FilterStatus";
 
+const FILTER_STATUS: FilterStatus[] = [FilterStatus.DONE, FilterStatus.PENDING];
+
 export default function Home() {
   return (
     <View style={s.container}>
@@ -18,8 +20,9 @@ export default function Home() {
       </View>
 
       <View style={s.content}>
-        <Filter status={FilterStatus.DONE} isActive />
-        <Filter status={FilterStatus.PENDING} isActive={false} />
+        {FILTER_STATUS.map((status) => (
+          <Filter key={status} status={status} isActive />
+        ))}
       </View>
     </View>
   );
