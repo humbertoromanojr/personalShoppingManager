@@ -24,10 +24,10 @@ PSM - PERSONAL SHOPPING MANAGER
   <br /><br />
 
 - [React Native](https://reactnative.dev/)
-
+- [Expo](https://expo.dev/)
 - [React Navigation](https://reactnavigation.org/docs/getting-started#installation)
   - [React Navigation Native Stack](https://reactnavigation.org/docs/hello-react-navigation)
-  - [React Navigation Bottom Tab Navigator](https://reactnavigation.org/docs/upgrading-from-5.x/#bottom-tab-navigator)
+- [Lucid Icons](https://lucide.dev/)
 
 ## Demonstration
 
@@ -39,8 +39,11 @@ PSM - PERSONAL SHOPPING MANAGER
 
 ## Install
 
-Install React Native CLI <br />
-`npx @react-native-community/cli init NewProject` <br />
+Install React Native Expo <br />
+`npx create-expo-app@latest --template personalShoppingManager` <br /><br />
+
+Install Lucide and SVG<br />
+`npm install lucide-react-native react-native-svg`<br /><br />
 
 Clone project to repository:<br />
 <img src="https://drive.google.com/uc?export=view&id=16QqYlur8qtl5ao_XyEb4IthGyveQmELo" alt="" width="22" border="0" />
