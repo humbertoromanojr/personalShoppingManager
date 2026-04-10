@@ -1,9 +1,13 @@
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
 
-export default function Button() {
+type Props = {
+  title: string;
+};
+
+export default function Button({ title }: Props) {
   return (
     <TouchableOpacity style={s.container} activeOpacity={0.7}>
-      <Text style={s.title}>Adicionar</Text>
+      <Text style={s.title}>{title}</Text>
     </TouchableOpacity>
   );
 }

@@ -8,7 +8,7 @@ export default function Home() {
     <View style={s.container}>
       <StatusBar style="light" />
       <Image style={s.logo} source={require("@/assets/logo.png")} />
-      <Button />
+      <Button title="Adicionar" />
     </View>
   );
 }
@@ -20,6 +20,7 @@ const s = StyleSheet.create({
     alignItems: "center",
     paddingTop: 62,
     padding: 24,
+    gap: 24,
   },
   logo: {
     height: 34,
