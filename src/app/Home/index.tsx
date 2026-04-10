@@ -1,10 +1,11 @@
 import { StatusBar } from "expo-status-bar";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, TouchableOpacity, Text, View } from "react-native";
 
 import Button from "@/app/components/Button";
 import Input from "@/app/components/Input";
 import Filter from "@/app/components/Filter";
 import { FilterStatus } from "@/types/FilterStatus";
+import Item from "@/app/components/Item";
 
 const FILTER_STATUS: FilterStatus[] = [FilterStatus.PENDING, FilterStatus.DONE];
 
@@ -24,7 +25,16 @@ export default function Home() {
           {FILTER_STATUS.map((status) => (
             <Filter key={status} status={status} isActive />
           ))}
+          <TouchableOpacity style={s.clearButton}>
+            <Text style={s.clearText}>Limpar</Text>
+          </TouchableOpacity>
         </View>
+
+        <Item
+          data={{ status: FilterStatus.DONE, description: "Café Capuccino" }}
+          onStatus={() => console.log("troca status")}
+          onRemove={() => console.log("remover")}
+        />
       </View>
     </View>
   );
@@ -54,6 +64,7 @@ const s = StyleSheet.create({
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     marginTop: 24,
+    paddingTop: 32,
     padding: 24,
   },
   headerContent: {
@@ -63,5 +74,13 @@ const s = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#e4e6ec",
     paddingBottom: 12,
+  },
+  clearButton: {
+    marginLeft: "auto",
+  },
+  clearText: {
+    fontSize: 12,
+    color: "#828282",
+    fontWeight: "600",
   },
 });
