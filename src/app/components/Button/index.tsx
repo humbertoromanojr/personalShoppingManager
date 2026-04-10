@@ -7,7 +7,6 @@ import {
 
 type Props = TouchableOpacityProps & {
   title: string;
-  onPress?: () => void;
 };
 
 export default function Button({ title, ...rest }: Props) {
