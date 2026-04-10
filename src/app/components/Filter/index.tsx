@@ -36,6 +36,6 @@ const s = StyleSheet.create({
   },
   title: {
     color: "#222",
-    fontSize: 22,
+    fontSize: 14,
   },
 });

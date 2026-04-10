@@ -6,7 +6,7 @@ import Input from "@/app/components/Input";
 import Filter from "@/app/components/Filter";
 import { FilterStatus } from "@/types/FilterStatus";
 
-const FILTER_STATUS: FilterStatus[] = [FilterStatus.DONE, FilterStatus.PENDING];
+const FILTER_STATUS: FilterStatus[] = [FilterStatus.PENDING, FilterStatus.DONE];
 
 export default function Home() {
   return (
@@ -20,9 +20,11 @@ export default function Home() {
       </View>
 
       <View style={s.content}>
-        {FILTER_STATUS.map((status) => (
-          <Filter key={status} status={status} isActive />
-        ))}
+        <View style={s.headerContent}>
+          {FILTER_STATUS.map((status) => (
+            <Filter key={status} status={status} isActive />
+          ))}
+        </View>
       </View>
     </View>
   );
@@ -53,5 +55,13 @@ const s = StyleSheet.create({
     borderTopRightRadius: 24,
     marginTop: 24,
     padding: 24,
+  },
+  headerContent: {
+    width: "100%",
+    flexDirection: "row",
+    gap: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: "#e4e6ec",
+    paddingBottom: 12,
   },
 });
