@@ -9,8 +9,13 @@ export default function Home() {
     <View style={s.container}>
       <StatusBar style="light" />
       <Image style={s.logo} source={require("@/assets/logo.png")} />
-      <Input placeholder="O que você precisa comprar?" />
-      <Button title="Adicionar" />
+
+      <View style={s.form}>
+        <Input placeholder="O que você precisa comprar?" />
+        <Button title="Adicionar" />
+      </View>
+
+      <View style={s.content}></View>
     </View>
   );
 }
@@ -21,11 +26,24 @@ const s = StyleSheet.create({
     backgroundColor: "#d0d2db",
     alignItems: "center",
     paddingTop: 62,
-    padding: 24,
-    gap: 24,
   },
   logo: {
     height: 34,
     width: 134,
+  },
+  form: {
+    width: "100%",
+    paddingHorizontal: 16,
+    gap: 7,
+    marginTop: 42,
+  },
+  content: {
+    flex: 1,
+    width: "100%",
+    backgroundColor: "#fff",
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    marginTop: 24,
+    padding: 24,
   },
 });
