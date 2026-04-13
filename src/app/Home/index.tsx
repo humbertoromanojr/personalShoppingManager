@@ -7,6 +7,7 @@ import {
   Text,
   View,
   FlatList,
+  Alert,
 } from "react-native";
 
 import Button from "@/app/components/Button";
@@ -16,20 +17,18 @@ import { FilterStatus } from "@/types/FilterStatus";
 import Item from "@/app/components/Item";
 
 const FILTER_STATUS: FilterStatus[] = [FilterStatus.PENDING, FilterStatus.DONE];
-const ITEMS = [
-  { id: "1", status: FilterStatus.PENDING, description: "1 pacote de leite" },
-  { id: "2", status: FilterStatus.DONE, description: "4 Danetes de chocolate" },
-  {
-    id: "3",
-    status: FilterStatus.PENDING,
-    description: "3 pacote de macarrão",
-  },
-  { id: "4", status: FilterStatus.DONE, description: "5 latas de cerveja" },
-];
 
 export default function Home() {
   const [filter, setFilter] = useState(FilterStatus.PENDING);
   const [description, setDescription] = useState("");
+
+  const [items, setItems] = useState([]);
+
+  function handleAdd() {
+    if (!description.trim()) {
+      return Alert.alert("Adicionar", "Informe a descrição para adicionar.");
+    }
+  }
 
   return (
     <View style={s.container}>
@@ -41,7 +40,7 @@ export default function Home() {
           placeholder="O que você precisa comprar?"
           onChangeText={setDescription}
         />
-        <Button title="Adicionar" />
+        <Button title="Adicionar" onPress={handleAdd} />
       </View>
 
       <View style={s.content}>
@@ -60,7 +59,7 @@ export default function Home() {
         </View>
 
         <FlatList
-          data={ITEMS}
+          data={items}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <Item
