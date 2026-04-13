@@ -8,6 +8,7 @@ import {
   View,
   FlatList,
   Alert,
+  ToastAndroid,
 } from "react-native";
 
 import Button from "@/app/components/Button";
@@ -41,7 +42,13 @@ export default function Home() {
     await itemsByStatus();
     setFilter(FilterStatus.PENDING);
 
-    Alert.alert("Adicionado", `Adicionado ${description} com sucesso.`);
+    ToastAndroid.showWithGravity(
+      `Adicionado ${description} com sucesso 👋.`,
+      ToastAndroid.SHORT,
+      ToastAndroid.TOP,
+    );
+
+    //Alert.alert("Adicionado", `Adicionado ${description} com sucesso.`);
     setDescription("");
   }
 
@@ -59,6 +66,12 @@ export default function Home() {
     try {
       await itemsStorage.remove(id);
       await itemsByStatus();
+
+      ToastAndroid.showWithGravity(
+        `Removido com sucesso 👋.`,
+        ToastAndroid.SHORT,
+        ToastAndroid.CENTER,
+      );
     } catch (error) {
       console.log(error);
       Alert.alert("Remover", "Não foi possível remover.");
