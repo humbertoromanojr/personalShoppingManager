@@ -22,7 +22,6 @@ const FILTER_STATUS: FilterStatus[] = [FilterStatus.PENDING, FilterStatus.DONE];
 export default function Home() {
   const [filter, setFilter] = useState(FilterStatus.PENDING);
   const [description, setDescription] = useState("");
-  const [clean, setClean] = useState("");
 
   const [items, setItems] = useState<ItemStorage[]>([]);
 
@@ -38,14 +37,17 @@ export default function Home() {
     };
 
     await itemsStorage.add(newItem);
-
     //load items in screen
-    await getItems();
+    await itemsByStatus();
+    setFilter(FilterStatus.PENDING);
+
+    Alert.alert("Adicionado", `Adicionado ${description} com sucesso.`);
+    setDescription("");
   }
 
-  async function getItems() {
+  async function itemsByStatus() {
     try {
-      const response = await itemsStorage.get();
+      const response = await itemsStorage.getByStatus(filter);
       setItems(response);
     } catch (error) {
       console.log(error);
@@ -53,9 +55,19 @@ export default function Home() {
     }
   }
 
+  async function handleRemove(id: string) {
+    try {
+      await itemsStorage.remove(id);
+      await itemsByStatus();
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Remover", "Não foi possível remover.");
+    }
+  }
+
   useEffect(() => {
-    getItems();
-  }, []);
+    itemsByStatus();
+  }, [filter]);
 
   return (
     <View style={s.container}>
@@ -66,6 +78,7 @@ export default function Home() {
         <Input
           placeholder="O que você precisa comprar?"
           onChangeText={setDescription}
+          value={description}
         />
         <Button title="Adicionar" onPress={handleAdd} />
       </View>
@@ -92,7 +105,7 @@ export default function Home() {
             <Item
               data={item}
               onStatus={() => console.log("troca status", item.description)}
-              onRemove={() => console.log("remover", item.description)}
+              onRemove={() => handleRemove(item.id)}
             />
           )}
           showsVerticalScrollIndicator={false}
