@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   Image,
@@ -15,6 +15,7 @@ import Input from "@/app/components/Input";
 import Filter from "@/app/components/Filter";
 import { FilterStatus } from "@/types/FilterStatus";
 import Item from "@/app/components/Item";
+import { itemsStorage, ItemStorage } from "@/storage/itemsStorage";
 
 const FILTER_STATUS: FilterStatus[] = [FilterStatus.PENDING, FilterStatus.DONE];
 
@@ -23,7 +24,7 @@ export default function Home() {
   const [description, setDescription] = useState("");
   const [clean, setClean] = useState("");
 
-  const [items, setItems] = useState<any>([]);
+  const [items, setItems] = useState<ItemStorage[]>([]);
 
   function handleAdd() {
     if (!description.trim()) {
@@ -38,6 +39,20 @@ export default function Home() {
 
     setItems((prevState) => [...prevState, newItem]);
   }
+
+  async function getItems() {
+    try {
+      const response = await itemsStorage.get();
+      setItems(response);
+    } catch (error) {
+      console.log(error);
+      Alert.alert("ERROR", "Não foi possível filtrar os itens.");
+    }
+  }
+
+  useEffect(() => {
+    getItems();
+  }, []);
 
   return (
     <View style={s.container}>
