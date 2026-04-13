@@ -27,7 +27,8 @@ PSM - PERSONAL SHOPPING MANAGER
 - [Expo](https://expo.dev/)
 - [React Navigation](https://reactnavigation.org/docs/getting-started#installation)
   - [React Navigation Native Stack](https://reactnavigation.org/docs/hello-react-navigation)
-- [Lucid Icons](https://lucide.dev/)
+- [Lucide Icons](https://lucide.dev/)
+- [Async Storage](https://docs.expo.dev/versions/latest/sdk/async-storage/)
 
 ## Demonstration
 
@@ -44,6 +45,9 @@ Install React Native Expo <br />
 
 Install Lucide and SVG<br />
 `npm install lucide-react-native react-native-svg`<br /><br />
+
+Install Async Storage<br />
+`npx expo install @react-native-async-storage/async-storage`<br /><br />
 
 Clone project to repository:<br />
 <img src="https://drive.google.com/uc?export=view&id=16QqYlur8qtl5ao_XyEb4IthGyveQmELo" alt="" width="22" border="0" />
