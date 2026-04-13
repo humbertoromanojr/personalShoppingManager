@@ -17,6 +17,7 @@ import Filter from "@/app/components/Filter";
 import { FilterStatus } from "@/types/FilterStatus";
 import Item from "@/app/components/Item";
 import { itemsStorage, ItemStorage } from "@/storage/itemsStorage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const FILTER_STATUS: FilterStatus[] = [FilterStatus.PENDING, FilterStatus.DONE];
 
@@ -44,11 +45,10 @@ export default function Home() {
 
     ToastAndroid.showWithGravity(
       `Adicionado ${description} com sucesso 👋.`,
-      ToastAndroid.SHORT,
       ToastAndroid.TOP,
+      ToastAndroid.SHORT,
     );
 
-    //Alert.alert("Adicionado", `Adicionado ${description} com sucesso.`);
     setDescription("");
   }
 
@@ -75,6 +75,34 @@ export default function Home() {
     } catch (error) {
       console.log(error);
       Alert.alert("Remover", "Não foi possível remover.");
+    }
+  }
+
+  function handleClear() {
+    Alert.alert(
+      "Confirmação",
+      "Você tem certeza que deseja excluir toda Lista?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancelado"),
+          style: "cancel",
+        },
+        {
+          text: "OK",
+          onPress: () => onClear(),
+        },
+      ],
+    );
+  }
+
+  async function onClear() {
+    try {
+      await itemsStorage.clear();
+      setItems([]);
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Clear", "Não foi possível limpar.");
     }
   }
 
@@ -106,7 +134,7 @@ export default function Home() {
               onPress={() => setFilter(status)}
             />
           ))}
-          <TouchableOpacity style={s.clearButton}>
+          <TouchableOpacity style={s.clearButton} onPress={handleClear}>
             <Text style={s.clearText}>Limpar</Text>
           </TouchableOpacity>
         </View>
