@@ -42,7 +42,7 @@ const s = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 5,
-    paddingVertical: 15,
+    paddingVertical: 20,
   },
   description: {
     flex: 1,

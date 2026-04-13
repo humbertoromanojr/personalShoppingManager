@@ -5,7 +5,14 @@ type Props = TextInputProps & {
 };
 
 export default function Button({ placeholder, ...rest }: Props) {
-  return <TextInput style={s.container} placeholder={placeholder} {...rest} />;
+  return (
+    <TextInput
+      style={s.container}
+      placeholder={placeholder}
+      placeholderTextColor="#808080"
+      {...rest}
+    />
+  );
 }
 
 const s = StyleSheet.create({
