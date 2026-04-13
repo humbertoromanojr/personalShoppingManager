@@ -1,5 +1,13 @@
+import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { Image, StyleSheet, TouchableOpacity, Text, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  View,
+  FlatList,
+} from "react-native";
 
 import Button from "@/app/components/Button";
 import Input from "@/app/components/Input";
@@ -8,8 +16,20 @@ import { FilterStatus } from "@/types/FilterStatus";
 import Item from "@/app/components/Item";
 
 const FILTER_STATUS: FilterStatus[] = [FilterStatus.PENDING, FilterStatus.DONE];
+const ITEMS = [
+  { id: "1", status: FilterStatus.PENDING, description: "1 pacote de leite" },
+  { id: "2", status: FilterStatus.DONE, description: "4 Danetes de chocolate" },
+  {
+    id: "3",
+    status: FilterStatus.PENDING,
+    description: "3 pacote de macarrão",
+  },
+  { id: "4", status: FilterStatus.DONE, description: "5 latas de cerveja" },
+];
 
 export default function Home() {
+  const [filter, setFilter] = useState(FilterStatus.PENDING);
+
   return (
     <View style={s.container}>
       <StatusBar style="light" />
@@ -23,17 +43,34 @@ export default function Home() {
       <View style={s.content}>
         <View style={s.headerContent}>
           {FILTER_STATUS.map((status) => (
-            <Filter key={status} status={status} isActive />
+            <Filter
+              key={status}
+              status={status}
+              isActive={status === filter}
+              onPress={() => setFilter(status)}
+            />
           ))}
           <TouchableOpacity style={s.clearButton}>
             <Text style={s.clearText}>Limpar</Text>
           </TouchableOpacity>
         </View>
 
-        <Item
-          data={{ status: FilterStatus.DONE, description: "Café Capuccino" }}
-          onStatus={() => console.log("troca status")}
-          onRemove={() => console.log("remover")}
+        <FlatList
+          data={ITEMS}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <Item
+              data={item}
+              onStatus={() => console.log("troca status", item.description)}
+              onRemove={() => console.log("remover", item.description)}
+            />
+          )}
+          showsVerticalScrollIndicator={false}
+          ItemSeparatorComponent={() => <View style={s.separator} />}
+          contentContainerStyle={s.listContent}
+          ListEmptyComponent={() => (
+            <Text style={s.listEmpty}>Nenhuma compra ainda.</Text>
+          )}
         />
       </View>
     </View>
@@ -75,6 +112,7 @@ const s = StyleSheet.create({
     borderBottomColor: "#e4e6ec",
     paddingBottom: 12,
   },
+  listContent: { paddingTop: 24, paddingBottom: 62 },
   clearButton: {
     marginLeft: "auto",
   },
@@ -82,5 +120,17 @@ const s = StyleSheet.create({
     fontSize: 12,
     color: "#828282",
     fontWeight: "600",
+  },
+  separator: {
+    width: "100%",
+    borderBottomWidth: 1,
+    borderBottomColor: "#e4e6ec",
+  },
+  listEmpty: {
+    fontSize: 22,
+    color: "#808080",
+    fontWeight: "bold",
+    textAlign: "center",
+    marginTop: 42,
   },
 });

@@ -35,7 +35,8 @@ const s = StyleSheet.create({
     gap: 5,
   },
   title: {
-    color: "#222",
+    color: "#000",
     fontSize: 14,
+    fontWeight: "bold",
   },
 });
