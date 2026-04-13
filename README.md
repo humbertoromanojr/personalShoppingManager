@@ -6,7 +6,7 @@ PSM - PERSONAL SHOPPING MANAGER
 
 </h1>
 
-> Status from Project: <img src="https://drive.google.com/uc?export=view&id=1Tak2fjuusuwdzNI_rwhPqLHGVLVKNTm1" alt="" width="32" border="0" /> Under Construction <img src="https://drive.google.com/uc?export=view&id=1Tak2fjuusuwdzNI_rwhPqLHGVLVKNTm1" alt="" width="32" border="0" />
+> Status from Project: <img src="https://drive.google.com/uc?export=view&id=1Tak2fjuusuwdzNI_rwhPqLHGVLVKNTm1" alt="" width="32" border="0" /> C O M P L E T E D <img src="https://drive.google.com/uc?export=view&id=1Tak2fjuusuwdzNI_rwhPqLHGVLVKNTm1" alt="" width="32" border="0" />
 
 ## Shields
 
@@ -33,7 +33,11 @@ PSM - PERSONAL SHOPPING MANAGER
 ## Demonstration
 
 <div align="center">
-  <img src="https://drive.google.com/uc?export=view&id=" alt="" width="100%" border="0" />
+  <img src="https://drive.google.com/uc?export=view&id=1kLRKzXIMW4OnpzE4w09dKK3_kkZS59jZ" alt="" width="100%" border="0" />
+</div>
+<br />
+<div align="center">
+  <img src="https://drive.google.com/uc?export=view&id=1awKsPRJLG2a8VMr9DYlIKLts6D362Wqo" alt="" width="100%" border="0" />
 </div>
 
 ## Project Dynamics
