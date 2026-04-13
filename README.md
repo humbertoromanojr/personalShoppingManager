@@ -25,8 +25,6 @@ PSM - PERSONAL SHOPPING MANAGER
 
 - [React Native](https://reactnative.dev/)
 - [Expo](https://expo.dev/)
-- [React Navigation](https://reactnavigation.org/docs/getting-started#installation)
-  - [React Navigation Native Stack](https://reactnavigation.org/docs/hello-react-navigation)
 - [Lucide Icons](https://lucide.dev/)
 - [Async Storage](https://docs.expo.dev/versions/latest/sdk/async-storage/)
 
