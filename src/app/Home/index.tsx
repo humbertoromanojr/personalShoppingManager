@@ -29,6 +29,7 @@ const ITEMS = [
 
 export default function Home() {
   const [filter, setFilter] = useState(FilterStatus.PENDING);
+  const [description, setDescription] = useState("");
 
   return (
     <View style={s.container}>
@@ -36,7 +37,10 @@ export default function Home() {
       <Image style={s.logo} source={require("@/assets/logo.png")} />
 
       <View style={s.form}>
-        <Input placeholder="O que você precisa comprar?" />
+        <Input
+          placeholder="O que você precisa comprar?"
+          onChangeText={setDescription}
+        />
         <Button title="Adicionar" />
       </View>
 
